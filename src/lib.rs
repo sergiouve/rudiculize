@@ -1,7 +1,6 @@
 mod utils;
 
-fn main() {
-    let text = String::from("eso que has dicho me ha ofendido cantidad");
+pub fn ridiculize(text: String) {
     let mut ridiculized = String::new();
     let mut iter = text.chars().peekable();
 
