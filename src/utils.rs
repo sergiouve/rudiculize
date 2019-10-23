@@ -9,10 +9,10 @@ pub fn is_vowel(character: &char) -> bool {
     return false;
 }
 
-pub fn swap_characters(original: &char, replacement: char) -> String {
+pub fn swap_characters(original: &char, replacement: String) -> String {
     if original.is_uppercase() {
-        return replacement.to_uppercase().to_string();
+        return replacement.to_uppercase();
     }
 
-    return replacement.to_string();
+    return replacement;
 }
