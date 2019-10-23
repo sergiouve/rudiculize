@@ -1,15 +1,13 @@
 mod utils;
 
-pub fn ridiculize(text: String) {
+pub fn ridiculize(text: &str) -> String {
     let mut ridiculized = String::new();
     let mut iter = text.chars().peekable();
 
     while let Some(character) = iter.next() {
-        if iter.peek().is_none() { break; }
+        let next_character: Option<&char> = iter.peek();
 
-        let next_character = *iter.peek().unwrap();
-
-        if character == 'q' && next_character == 'u' {
+        if character == 'q' && *next_character.unwrap() == 'u' {
             continue;
         }
 
@@ -20,14 +18,19 @@ pub fn ridiculize(text: String) {
         }
 
         // TODO
-        if character == 'c' && next_character != 'i' && utils::is_vowel(&next_character) {
+        if character == 'c' && *next_character.unwrap() != 'i' && utils::is_vowel(next_character.unwrap()) {
             let swapped_character = utils::swap_characters(&character, 'q');
             ridiculized.push_str(&swapped_character);
             ridiculized.push_str("u");
         }
 
         ridiculized.push(character);
+
+        match next_character {
+            Some(_) => continue,
+            None => break,
+        }
     }
 
-    println!("{} => {}", text, ridiculized);
+    return ridiculized;
 }

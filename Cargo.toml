@@ -1,5 +1,5 @@
 [package]
-name = "rudiliculize"
+name = "rudiculize"
 version = "0.1.0"
 authors = ["Sergio Uve <sergiouve@gmail.com>"]
 edition = "2018"
